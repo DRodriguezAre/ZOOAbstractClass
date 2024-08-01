@@ -1,0 +1,109 @@
+package zoologico;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import java.awt.event.MouseListener;
+import javax.swing.JTextField;
+
+public class Alimento extends JFrame{
+    
+        public Alimento(){
+            //this.setSize(500,500);
+            setDefaultCloseOperation(EXIT_ON_CLOSE);
+            setTitle("Zoologico");
+            //setLocation(500,200);
+            setBounds(500,200,500,500);
+            Componentes();
+        }
+
+    private void Componentes(){
+        JPanel panel = new JPanel();
+        panel.setLayout(null);
+        this.getContentPane().add(panel);
+        
+        JLabel etiqueta = new JLabel();
+        etiqueta.setText("GESTION DE ALIMENTO");
+        etiqueta.setBounds(170, 20, 300, 15);
+        panel.add(etiqueta);
+        
+        JLabel cajaTexto3 = new JLabel();
+        cajaTexto3.setBounds(50,100,150,30);
+        cajaTexto3.setText("Cantidad de alimento");
+        panel.add(cajaTexto3);
+        
+        JLabel cajaTexto4 = new JLabel();
+        cajaTexto4.setBounds(50,250,120,30);
+        cajaTexto4.setText("Tipo de alimento");
+        panel.add(cajaTexto4);
+        
+        JLabel cajaTexto5 = new JLabel
+        ();
+        cajaTexto5.setBounds(50,380,120,30);
+        cajaTexto5.setText("Cuantas veces al dia");
+        panel.add(cajaTexto5);
+        
+        
+        JButton boton1 = new JButton("Agregar Kg");
+        JButton boton2 = new JButton("Normal");
+        JButton boton3 = new JButton("Dietetico");
+        boton1.setBounds(50, 150, 100,40);
+        boton2.setBounds(50, 300, 100,40);
+        boton3.setBounds(200, 300, 100,40);
+        panel.add(boton1);
+        panel.add(boton2);
+        panel.add(boton3);
+        boton1.setEnabled(true);
+        boton2.setEnabled(true);
+        boton3.setEnabled(true);
+        JTextField cajaTexto = new JTextField();
+        cajaTexto.setBounds(200,150,100,30);
+        panel.add(cajaTexto);
+        JTextField cajaTexto2 = new JTextField();
+        cajaTexto2.setBounds(200,380,100,30);
+        cajaTexto2.setText("");
+        panel.add(cajaTexto2);
+        
+         boton2.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+           cajaTexto2.setText("2 veces al dia");
+         }
+        });
+        
+         boton3.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+           cajaTexto2.setText("3 veces al dia");
+         }
+        });
+        
+        MouseListener eventoraton;
+        eventoraton = new MouseListener (){
+            @Override 
+            public void mouseClicked(MouseEvent e){
+                int x = 1;
+                x++;
+                String xText = Integer.toString(x);
+                cajaTexto.setText(xText+" kg");      
+            }
+            @Override
+            public void mouseEntered(MouseEvent e){
+            }
+            @Override
+            public void mouseExited(MouseEvent e){
+            }
+            @Override
+            public void mousePressed(MouseEvent e){
+            }
+            @Override
+            public void mouseReleased(MouseEvent e){
+            }
+        };
+        boton1.addMouseListener(eventoraton);         
+    }
+}
