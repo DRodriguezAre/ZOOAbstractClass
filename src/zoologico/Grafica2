@@ -1,0 +1,88 @@
+package zoologico;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import java.awt.event.KeyListener;
+        
+public class Grafica2 extends JFrame {
+        
+    public Grafica2(){
+            //this.setSize(500,500);
+            setDefaultCloseOperation(EXIT_ON_CLOSE);
+            setTitle("Zoologico");
+            //setLocation(500,200);
+            setBounds(500,200,500,500);
+            Componentes();
+        }
+    private void Componentes(){
+        JPanel panel = new JPanel();//creando el panel
+        panel.setLayout(null);//desactivando el diseño
+        this.getContentPane().add(panel);
+        
+        JLabel etiqueta = new JLabel();//creando la eitqueta
+        etiqueta.setText("GESTION DE ANIMALES");//Poniendo el texto
+        etiqueta.setBounds(170, 10, 300, 15);
+        panel.add(etiqueta);
+        
+        JButton boton1 = new JButton("Habitat");
+        JButton boton2 = new JButton("Alimentos");
+        JButton boton3 = new JButton("Completado");
+        boton1.setBounds(200, 100, 100,40);
+        boton2.setBounds(200, 200, 100,40);
+        boton3.setBounds(200, 300, 100,40);
+        panel.add(boton1);
+        panel.add(boton2);
+        panel.add(boton3);
+        boton1.setEnabled(true);
+        boton2.setEnabled(true);
+        boton3.setEnabled(true);
+         boton1.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+           Habitad newframe = new Habitad();
+           newframe.setVisible(true);
+         }
+        });
+        boton2.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+           Alimento newframe = new Alimento();
+           newframe.setVisible(true);
+         }
+        });
+ 
+        KeyListener eventotecla;
+        eventotecla = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if(e.getKeyChar() == '\n'){
+                    boton3.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                    etiqueta.setText("Completado");
+                    }
+        });
+                }
+            }
+        };
+       
+        
+        boton3.addKeyListener(eventotecla);
+        
+    }
+}
