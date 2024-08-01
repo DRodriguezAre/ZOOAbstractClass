@@ -1,0 +1,96 @@
+package zoologico;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import java.awt.event.MouseListener;
+import javax.swing.JTextField;
+
+public class Habitad extends JFrame{
+    
+    public Habitad(){
+            //this.setSize(500,500);
+            setDefaultCloseOperation(EXIT_ON_CLOSE);
+            setTitle("Zoologico");
+            //setLocation(500,200);
+            setBounds(500,200,500,500);
+            Componentes();
+        }
+
+    private void Componentes(){
+        JPanel panel = new JPanel();
+        panel.setLayout(null);
+        this.getContentPane().add(panel);
+        
+        JLabel etiqueta = new JLabel();
+        etiqueta.setText("GESTION DE HABITAT");
+        etiqueta.setBounds(170, 20, 300, 15);
+        panel.add(etiqueta);
+        
+        JLabel cajaTexto3 = new JLabel();
+        cajaTexto3.setBounds(170,100,150,30);
+        cajaTexto3.setText("Tamaño de jaula");
+        panel.add(cajaTexto3);
+        
+        JLabel cajaTexto4 = new JLabel();
+        cajaTexto4.setBounds(50,250,130,30);
+        cajaTexto4.setText("Cantidad de juguetes");
+        panel.add(cajaTexto4);
+        
+        JLabel cajaTexto5 = new JLabel();
+        cajaTexto5.setBounds(50,380,140,30);
+        cajaTexto5.setText("Cantidad de gimnasios");
+        panel.add(cajaTexto5);
+        
+        JTextField cajaTexto = new JTextField();
+        cajaTexto.setBounds(200,250,100,30);
+        panel.add(cajaTexto);
+        
+        JTextField cajaTexto2 = new JTextField();
+        cajaTexto2.setBounds(200,380,100,30);
+        panel.add(cajaTexto2);
+        
+        JButton boton1 = new JButton("35 m^2");
+        JButton boton2 = new JButton("45 m^2");
+        JButton boton3 = new JButton("55 m^2");
+        boton1.setBounds(50, 150, 100,40);
+        boton2.setBounds(170, 150, 100,40);
+        boton3.setBounds(300, 150, 100,40);
+        panel.add(boton1);
+        panel.add(boton2);
+        panel.add(boton3);
+        boton1.setEnabled(true);
+        boton2.setEnabled(true);
+        boton3.setEnabled(true);
+        
+        boton1.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+           cajaTexto.setText("10 juguetes");
+           cajaTexto2.setText("5 gimnasios");
+         }
+        });
+        
+        boton2.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+           cajaTexto.setText("15 juguetes");
+           cajaTexto2.setText("10 gimnasios");
+         }
+        });
+        
+        boton3.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+           cajaTexto.setText("20 juguetes");
+           cajaTexto2.setText("15 gimnasios");
+         }
+        });
+                  
+    }
+    
+}
